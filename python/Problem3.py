@@ -1,7 +1,7 @@
 from math import sqrt
 
 __author__ = 'Winton'
-from prime import is_prime
+from project_euler.python.prime import is_prime
 
 def largest_prime_factor(n):
     return largest_prime(n, 1)
