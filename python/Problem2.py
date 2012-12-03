@@ -1,5 +1,3 @@
-from math import sqrt
-
 __author__ = 'Winton'
 fibonacci_map = {0:0, 1:1}
 def fib(n):
