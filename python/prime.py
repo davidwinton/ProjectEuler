@@ -47,3 +47,42 @@ def prime_factorization_helper(n, start_prime, accumulator ):
             accumulator[x] = count
             return prime_factorization_helper(new_num, x, accumulator)
     return accumulator
+
+#Finds the LCM of q series of numbers based on their prime factorizations
+def factorization_union(dict1, dict2):
+    union = {}
+    for k in dict1.keys():
+        if k not in dict2:
+            union[k] = dict1[k]
+        else:
+            union[k] = max(dict1[k], dict2[k])
+    for k2 in dict2.keys():
+        if k2 not in dict1:
+            union[k2] = dict2[k2]
+    return union
+
+#Implementation of the sieve of Eratosthenes, O(n log (log (n))) algorithm for finding the primes
+#less than n.
+def sieve(n):
+    A = set(xrange(2, n))
+    for x in xrange(2, n):
+        if x in A:
+            for y in xrange(2 * x, n, x):
+                if y in A:
+                    A.remove(y)
+    return A
+
+#TODO Expand this so that it runs the sieve on 10000 numbers stores the primes, and goes through
+# the next 10000.
+def find_nth_prime(n):
+    p = 0
+    A = set(xrange(2, 1000000))
+    for x in xrange(2, 1000000):
+        if x in A:
+            p += 1
+            if p == n:
+                return x
+            for y in xrange(2 * x, 1000000, x):
+                if y in A:
+                    A.remove(y)
+    return 0
